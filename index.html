@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSU Student Portal</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#222;
+}
+.header{
+    background:#174ea6;
+    color:white;
+    padding:25px 15px;
+    text-align:center;
+}
+.container{
+    max-width:600px;
+    margin:35px auto;
+    padding:20px;
+}
+.card{
+    background:white;
+    padding:30px 20px;
+    border-radius:15px;
+    box-shadow:0 3px 15px #ccc;
+    text-align:center;
+}
+h1{margin-top:0}
+button{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:0;
+    border-radius:8px;
+    background:#174ea6;
+    color:white;
+    font-size:17px;
+}
+input{
+    width:90%;
+    padding:14px;
+    margin-top:15px;
+    border:1px solid #bbb;
+    border-radius:8px;
+    font-size:16px;
+}
+#exam,#roll,#card{
+    display:none;
+}
+.admit{
+    text-align:left;
+    border:2px solid #174ea6;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+}
+.row{
+    padding:10px 0;
+    border-bottom:1px solid #ddd;
+}
+.back{
+    background:#666;
+}
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>MSU Student Portal</h1>
+    <p>Student Examination Portal</p>
+</div>
+<div class="container">
+<!-- HOME -->
+<div class="card" id="home">
+    <h2>Student Examination</h2>
+    <button onclick="showExam()">Examination 26-27</button>
+</div>
+<!-- EXAM -->
+<div class="card" id="exam">
+    <h2>Examination 26-27</h2>
+    <p>Pre Examination</p>
+    <button onclick="showRoll()">Proceed</button>
+    <button class="back" onclick="goHome()">Back</button>
+</div>
+<!-- ROLL NUMBER -->
+<div class="card" id="roll">
+    <h2>Student Examination 26-27</h2>
+    <p>Enter Roll Number</p>
+    <input id="rollno" type="text" placeholder="Enter Roll Number">
+    <button onclick="showCard()">Search</button>
+    <button class="back" onclick="showExam()">Back</button>
+</div>
+<!-- ADMIT CARD -->
+<div class="card" id="card">
+    <h2>Examination Hall Ticket</h2>
+    <h3>MSU University Vadodara</h3>
+    <div class="admit">
+        <div class="row"><b>Student Name:</b> Devda Jitendrasingh</div>
+        <div class="row"><b>Father Name:</b> Indra Singh</div>
+        <div class="row"><b>Course:</b> M.Com 1st Semester</div>
+        <div class="row"><b>Roll Number:</b> <span id="showroll"></span></div>
+        <div class="row"><b>Examination:</b> Pre Examination 26-27</div>
+        <div class="row"><b>Exam Dates:</b> 17 November 2026 to 03 December 2026</div>
+        <div class="row"><b>Date of Issue:</b> 06 November 2026</div>
+    </div>
+    <button class="back" onclick="goHome()">Back to Home</button>
+</div>
+</div>
+<script>
+function hideAll(){
+    document.getElementById("home").style.display="none";
+    document.getElementById("exam").style.display="none";
+    document.getElementById("roll").style.display="none";
+    document.getElementById("card").style.display="none";
+}
+function goHome(){
+    hideAll();
+    document.getElementById("home").style.display="block";
+}
+function showExam(){
+    hideAll();
+    document.getElementById("exam").style.display="block";
+}
+function showRoll(){
+    hideAll();
+    document.getElementById("roll").style.display="block";
+}
+function showCard(){
+    let roll=document.getElementById("rollno").value;
+    if(roll.trim()==""){
+        alert("Please enter Roll Number");
+        return;
+    }
+    document.getElementById("showroll").innerText=roll;
+    hideAll();
+    document.getElementById("card").style.display="block";
+}
+</script>
+</body>
+</html>
